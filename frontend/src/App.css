@@ -195,3 +195,78 @@ input:focus {
 .btns > svg {
   color: white;
 }
+
+.service_container {
+  width: 80%;
+  margin: auto;
+}
+.services {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 40px;
+  margin: 20px 0px;
+}
+.service {
+  width: 220px;
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 10px 10px;
+  margin: auto;
+}
+.service > img {
+  width: 80px;
+  margin: auto;
+}
+
+.lawyer_sec {
+  display: flex;
+  background-color: beige;
+  padding: 20px 10px;
+}
+.lawyer_img {
+  width: 40%;
+}
+.lawyer_img > img {
+  height: 450px;
+  margin: auto;
+}
+.lawyer_content {
+  width: 50%;
+  margin: auto;
+}
+.lawyer_feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.lawyer_feature_sec {
+  margin: 15px 0px;
+}
+.banner_sec {
+  position: relative;
+}
+.banner_sec > img {
+  height: 300px;
+  width: 100%;
+}
+.banner_txt {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.sub_btn {
+  margin-top: 35px;
+}
+.sub_btn > a {
+  background-color: orange;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
