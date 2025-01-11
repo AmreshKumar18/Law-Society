@@ -8,6 +8,10 @@ import Articles from "./Pages/Articles";
 import Blogs from "./Pages/Blogs";
 import Careers from "./Pages/Careers";
 import Contact from "./Pages/Contact";
+import ArticleDetails from "./Pages/ArticleDetails";
+import BlogDetails from "./Pages/BlogDetails";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +46,22 @@ function App() {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/articles/details",
+          element: <ArticleDetails />,
+        },
+        {
+          path: "/blog/details",
+          element: <BlogDetails />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ],
     },
