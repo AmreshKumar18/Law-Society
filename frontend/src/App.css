@@ -24,7 +24,7 @@ h3 {
 }
 
 h4 {
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -242,13 +242,13 @@ input:focus {
 
 .services {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   row-gap: 40px;
   margin: 20px 0px;
 }
 
 .service {
-  width: 220px;
+  width: 250px;
   text-align: center;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -259,6 +259,11 @@ input:focus {
 .service>img {
   width: 80px;
   margin: auto;
+  margin-bottom: 10px;
+}
+
+.service>h4 {
+  margin-bottom: 5px;
 }
 
 .lawyer_sec {
@@ -473,4 +478,78 @@ input:focus {
   margin-right: auto;
   display: grid;
   grid-template-columns: auto auto auto;
+}
+
+/* about */
+.abt_container {
+  background-color: #656262;
+  height: 20vh;
+}
+
+.abt_header_left>h6 {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(34, 34, 218, 1) 0%, rgba(18, 116, 235, 1) 49%, rgba(0, 212, 255, 1) 100%);
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+}
+
+.abt_header {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  gap: 50px;
+}
+
+.abt_header_right {
+  width: 40%;
+  margin: auto;
+}
+
+.abt_header_left {
+  width: 60%;
+  margin: auto;
+}
+
+.abt_header_left>h6 {
+  margin-bottom: 10px;
+}
+
+.abt_header_left>h4 {
+  margin-bottom: 10px;
+}
+
+.abt_header_left>p {
+  margin-bottom: 10px;
+}
+
+.sevices_container {
+  margin-top: 60px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.analytics_sec {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+.faq_sec {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 0px;
+}
+
+.faq_sec>h2 {
+  padding: 0px 0px 40px 0px;
+}
+
+.faq_container {
+  margin: 20px 0px;
+  background-color: #454545;
 }

@@ -18,40 +18,40 @@ const Services = () => {
         <div className="services">
           <div className="service">
             <img src={method} alt="" />
-            <h3>Method Development</h3>
+            <h4>Method Development</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={quality} alt="" />
-            <h3>Quality Assurance</h3>
+            <h4>Quality Assurance</h4>
             <h6>
               Quality excellence for optimal and sustainable business operation.
             </h6>
           </div>
           <div className="service">
             <img src={human} alt="" />
-            <h3>Human Resources</h3>
+            <h4>Human Resources</h4>
             <h6>Optimize human resources for sustainable business growth.</h6>
           </div>
           <div className="service">
             <img src={policy} alt="" />
-            <h3>Method Development</h3>
+            <h4>Method Development</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={strategy} alt="" />
-            <h3>Method Development</h3>
+            <h4>Method Development</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={management} alt="" />
-            <h3>Method Development</h3>
+            <h4>Method Development</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>

@@ -5,6 +5,8 @@ import trust from "../Assets/trust.png";
 import file from "../Assets/file.png";
 import education from "../Assets/education.png";
 import workers from "../Assets/workers.png";
+import global from "../Assets/global.png";
+import banking from "../Assets/banking.png";
 
 const Features = () => {
   return (
@@ -17,40 +19,54 @@ const Features = () => {
         <div className="services">
           <div className="service">
             <img src={business} alt="" />
-            <h3>Trust & Estates</h3>
+            <h4>Trust & Estates</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={trust} alt="" />
-            <h3>Business Law</h3>
+            <h4>Business Law</h4>
             <h6>
               Quality excellence for optimal and sustainable business operation.
             </h6>
           </div>
           <div className="service">
             <img src={family} alt="" />
-            <h3>Family Law</h3>
+            <h4>Family Law</h4>
             <h6>Optimize human resources for sustainable business growth.</h6>
           </div>
           <div className="service">
             <img src={file} alt="" />
-            <h3>Method Development</h3>
+            <h4>Civil Law</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={education} alt="" />
-            <h3>Method Development</h3>
+            <h4>Education Law</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
           </div>
           <div className="service">
             <img src={workers} alt="" />
-            <h3>Method Development</h3>
+            <h4>Corporate Law</h4>
+            <h6>
+              Strategic method development for business excellence and progress.
+            </h6>
+          </div>
+          <div className="service">
+            <img src={global} alt="" />
+            <h4>Banking and Finance</h4>
+            <h6>
+              Strategic method development for business excellence and progress.
+            </h6>
+          </div>
+          <div className="service">
+            <img src={banking} alt="" />
+            <h4>International Law</h4>
             <h6>
               Strategic method development for business excellence and progress.
             </h6>
