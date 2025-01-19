@@ -12,6 +12,7 @@ import ArticleDetails from "./Pages/ArticleDetails";
 import BlogDetails from "./Pages/BlogDetails";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import InternshipDetails from "./Pages/InternshipDetails";
 
 function App() {
   const router = createBrowserRouter([
@@ -40,7 +41,7 @@ function App() {
           element: <Blogs />,
         },
         {
-          path: "/careers",
+          path: "/internships",
           element: <Careers />,
         },
         {
@@ -54,6 +55,10 @@ function App() {
         {
           path: "/blog/details",
           element: <BlogDetails />,
+        },
+        {
+          path: "/internship/details",
+          element: <InternshipDetails />,
         },
         {
           path: "/login",

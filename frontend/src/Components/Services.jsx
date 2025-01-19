@@ -9,7 +9,7 @@ import management from "../Assets/management.png";
 const Services = () => {
   return (
     <>
-      <div>
+      <div className="service_container">
         <h2>What We Can Offer You</h2>
         <h6>
           Optimize Your Journey With Our Consulting Services, delivering

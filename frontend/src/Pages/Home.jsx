@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <div className="section">
         <Header />
-        <div className="service_container">
+        <div className="service_sec">
           <Services />
           <Features />
         </div>

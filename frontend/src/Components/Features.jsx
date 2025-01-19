@@ -11,7 +11,7 @@ import banking from "../Assets/banking.png";
 const Features = () => {
   return (
     <>
-      <div>
+      <div className="service_container">
         <h2>Our Practice Areas</h2>
         <h6>
           Problems trying to resolve the conflict between the two major realms.
