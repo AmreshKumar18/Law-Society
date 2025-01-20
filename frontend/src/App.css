@@ -42,6 +42,15 @@ h6 {
   background-color: #eaebf2;
 }
 
+.navbar-end>a {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(34, 34, 218, 1) 0%, rgba(18, 116, 235, 1) 49%, rgba(0, 212, 255, 1) 100%);
+  color: white;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
 .navbar {
   background-color: #454545;
 }
@@ -93,7 +102,7 @@ h6 {
 }
 
 .section {
-  margin-top: 60px;
+  margin-top: 65px;
 }
 
 .header_link a {
@@ -656,6 +665,47 @@ input:focus {
 .judge_card>h5 {
   text-align: center;
   margin: 10px 0px;
+}
+
+.login_container {
+  display: flex;
+  width: 80%;
+  height: 60vh;
+  margin: auto;
+  margin-top: 140px;
+  margin-bottom: 80px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  border-radius: 8px;
+  background-color: #f8f5f4;
+}
+
+.login_form {
+  width: 100%;
+  margin: auto;
+  padding-right: 20px;
+}
+
+.login_form>h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login_logo {
+  background-color: #454545;
+  width: 100px;
+  border-radius: 4px;
+  margin: auto;
+  padding: 10px;
+}
+
+.login_img {
+  width: 100%;
+  margin: auto;
+}
+
+.login_img>img {
+  height: 60vh;
+  margin: auto;
 }
 
 /* responsive */
