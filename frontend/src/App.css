@@ -102,7 +102,7 @@ h6 {
 }
 
 .section {
-  margin-top: 65px;
+  margin-top: 63px;
 }
 
 .header_link a {
@@ -240,13 +240,28 @@ input:focus {
   border-radius: 3px;
 }
 
+.btns_logout {
+  display: flex;
+  gap: 8px;
+  background-color: #ff0505;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 3px;
+}
+
 .btns>svg {
+  color: white;
+}
+
+.btns_logout>svg {
   color: white;
 }
 
 .service_container {
   width: 80%;
   margin: auto;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .services {
@@ -346,6 +361,8 @@ input:focus {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .article_container {
@@ -373,6 +390,8 @@ input:focus {
 .article_section>img {
   padding: 5px;
   border-radius: 5px;
+  height: 200px;
+  width: 100%;
 }
 
 .readmorebtn {
@@ -402,6 +421,11 @@ input:focus {
   margin-right: 20px;
 }
 
+.articlesdetails_sec>img {
+  height: 50vh;
+  width: 100%;
+}
+
 .advertisment_container {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -416,6 +440,7 @@ input:focus {
 
 .youtube_video {
   height: 200px;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   text-align: center;
@@ -423,12 +448,30 @@ input:focus {
   margin: auto;
 }
 
+.youtube_video>iframe {
+  height: 100%;
+}
+
 .channel_sec {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 15px;
-  height: 180px;
+  height: 170px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.sht_desc {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 6px 6px;
+  border-radius: 5px;
+}
+
+
+.article_desc {
+  margin-top: 20px;
 }
 
 .channel_name>h6 {
@@ -471,7 +514,7 @@ input:focus {
 .ads_container {
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .articlesdetails_sec>h3 {
@@ -492,10 +535,7 @@ input:focus {
 }
 
 /* about */
-.abt_container {
-  background-color: #656262;
-  height: 20vh;
-}
+
 
 .abt_header_left>h6 {
   background: rgb(2, 0, 36);
@@ -579,6 +619,15 @@ input:focus {
   margin-bottom: 60px;
 }
 
+.category_internship_container {
+  width: 80%;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+
 .group_container {
   width: 30%;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
@@ -610,7 +659,7 @@ input:focus {
 
 .internship_img>img {
   border-radius: 6px;
-  width: 450px;
+  width: 250px;
   height: 200px;
 }
 
@@ -707,6 +756,8 @@ input:focus {
   height: 60vh;
   margin: auto;
 }
+
+
 
 /* responsive */
 @media only screen and (max-width: 480px) {
@@ -877,6 +928,7 @@ input:focus {
     text-align: center;
   }
 
+
   .input_search>input {
     margin: auto;
     width: 100%;
@@ -885,6 +937,11 @@ input:focus {
   .article_card {
     display: grid;
     grid-template-columns: auto;
+  }
+
+  .article_section {
+    margin: auto;
+    margin-top: 20px;
   }
 
   .blog_container {
@@ -958,9 +1015,139 @@ input:focus {
     margin: auto;
     margin-top: 30px;
   }
+
+  .login_container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 90px;
+    margin-bottom: 40px;
+  }
+
+  .login_form {
+    width: 100%;
+    margin: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 40px;
+  }
+
+  .login_logo {
+    margin-top: 20px;
+  }
+
+  .login_img>img {
+    height: 40vh;
+    margin: auto;
+    border-bottom: 1px solid #454545;
+  }
+
+  .internship_container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .internshipdetails_sec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .internship_sec {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    height: 180px;
+  }
+
+  .internship_img>img {
+    height: 180px;
+    width: 550px;
+  }
+
+  .internship_title {
+    margin: 4px;
+  }
+
+  .internship_title>h4 {
+    font-size: 16px;
+  }
+
+  .internship_title>p {
+    font-size: 12px;
+  }
+
+  .group_container {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .judge_sec {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .judge_card {
+    padding: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    width: fit-content;
+    border-radius: 4px;
+    margin: auto;
+  }
+
+  .judge_card>img {
+    border-radius: 4px;
+    height: 280px;
+    width: 250px;
+  }
+
+  .judge_card>h5 {
+    text-align: center;
+    margin: 10px 0px;
+  }
+
+  .articlesdetails_container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .advertisment_container {
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .articlesdetails_sec>h3 {
+    font-size: 25px;
+  }
+
+  .channel_name>h3 {
+    font-size: 22px;
+  }
+
+  .channel_sec {
+    margin-top: 10px;
+    padding: 10px;
+    height: 180px;
+  }
 }
 
-@media only screen and (max-width: 720px) {
+
+@media only screen and (max-width: 720px) and (min-width: 480px) {
   .services {
     display: grid;
     grid-template-columns: auto auto;
@@ -1208,5 +1395,123 @@ input:focus {
     width: 100%;
     margin: auto;
     margin-top: 30px;
+  }
+}
+
+
+/* Navbar Container */
+/* General Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo */
+.navbar-logo a>img {
+  height: 50px;
+}
+
+/* Nav Links */
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-links a:hover {
+  color: orange;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #444;
+  min-width: 120px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+
+}
+
+.dropdown-menu a {
+  color: white;
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: white;
+  color: black;
+}
+
+
+/* Navbar Toggle Button (For Small Screens) */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.icon-bar {
+  background-color: white;
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    z-index: 50;
+    width: 100%;
   }
 }

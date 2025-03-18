@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Free from "../Assets/Free.jpg";
 import NGO from "../Assets/NGO.jpg";
 // import clock from "../Assets/clock.png";
@@ -6,43 +6,87 @@ import sheet from "../Assets/sheet.png";
 import eye from "../Assets/eye.png";
 import WhatsApp from "../Assets/WhatsApp.jpg";
 import Career from "../Assets/Career.jpg";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const InternshipDetails = () => {
+  const [internshipDetails, setInternshipDetails] = useState([]);
+  const { id } = useParams();
+  const getInternshipDetails = async () => {
+    try {
+      const res = await axios.get(`http://localhost:4000/api/internship/${id}`);
+      console.log(res.data);
+      setInternshipDetails(res.data);
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+  useEffect(() => {
+    getInternshipDetails();
+  });
+
+  //
+  const formatDate = (isoString) => {
+    if (!isoString) return "";
+    const dateObj = new Date(isoString);
+    return dateObj.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
   return (
     <>
       <div className="section internship_container">
         <div className="internshipdetails_sec">
-          <h3>Internship Details</h3>
+          <h3>{internshipDetails.title}</h3>
           <img src={NGO} alt="" />
+          <div className="badge badge-primary">
+            {internshipDetails.category}
+          </div>
           <div className="details_count">
             <img src={sheet} alt="" />
             <img src={eye} alt="" />
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-            distinctio quo repellat modi numquam. Fugit vero ab natus, accusamus
-            eos nihil dolores impedit. Saepe sint sed magnam totam, at inventore
-            cumque reprehenderit ut necessitatibus corporis facilis! Nemo
-            dolorum et quo nisi voluptatibus. Accusantium enim quibusdam nam
-            eius nisi dolorum doloribus voluptates. Ducimus incidunt at qui
-            minima doloremque aliquam deleniti, obcaecati et velit, consectetur
-            laboriosam cum quos laudantium? Dignissimos necessitatibus
-            repellendus minima sed? Cupiditate debitis vero temporibus, dolorem
-            id est consequuntur fugit error enim sint itaque beatae pariatur
-            ratione delectus, voluptatum atque, quasi nesciunt molestiae.
-            Tenetur dicta doloribus minima odio cum doloremque unde placeat
-            molestiae quis hic sed ipsam deleniti rem enim facere, eos dolorem
-            expedita assumenda. Sed ullam aliquam sapiente eveniet omnis natus,
-            adipisci atque! Error pariatur iste, quibusdam commodi sed nihil
-            dignissimos. Suscipit modi, nemo sed illum quidem quam nobis
-            corrupti officiis natus aspernatur. Culpa natus ea quam voluptates,
-            neque doloribus eum aperiam deleniti suscipit, odit exercitationem
-            repellat laboriosam provident excepturi tempore voluptatibus, quis
-            dicta libero? Harum, ad distinctio. Aliquid nulla, maiores pariatur
-            architecto vero incidunt temporibus. Illo nobis ab illum harum
-            numquam veniam eius ratione dolorum, corrupti est modi voluptatibus
-            quo ad veritatis non ea repudiandae dolores officiis!
-          </p>
+          <div>
+            <p>{internshipDetails.description}</p>
+          </div>
+          <div>
+            <h2>Requirements</h2>
+            <p>
+              {internshipDetails.requirements?.map((item) => (
+                <p>{item}</p>
+              ))}
+            </p>
+          </div>
+          <div>
+            <h2>Skill Required</h2>
+            <p>
+              {internshipDetails.skillsRequired?.map((item) => (
+                <p>{item}</p>
+              ))}
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>Company:</strong> {internshipDetails.company}
+            </p>
+            <p>
+              <strong>Location:</strong> {internshipDetails.location}
+            </p>
+            <p>
+              <strong>Duration:</strong> {internshipDetails.duration}
+            </p>
+            <p>
+              <strong>Stipend:</strong> {internshipDetails.stipend}
+            </p>
+            <p>
+              <strong>Application Deadline:</strong>{" "}
+              {formatDate(internshipDetails.applicationDeadline)}
+            </p>
+          </div>
         </div>
         {/*  */}
         <div className="group_container">

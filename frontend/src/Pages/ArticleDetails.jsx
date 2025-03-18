@@ -1,84 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import youtube from "../Assets/youtube.png";
-import article from "../Assets/article.png";
+import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const ArticleDetails = () => {
+  const [articleDetails, setArticleDetails] = useState([]);
+  const { id } = useParams();
+  const getArticleDetails = async () => {
+    try {
+      const res = await axios.get(`http://localhost:4000/api/articles/${id}`);
+      setArticleDetails(res.data);
+      console.log(res.data);
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
+  };
+  useEffect(() => {
+    getArticleDetails();
+  }, [id]);
+
+  const formatDate = (isoString) => {
+    if (!isoString) return "";
+    const dateObj = new Date(isoString);
+    return dateObj.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  };
+
   return (
     <>
       <div className="section articlesdetails_container">
         <div className="articlesdetails_sec">
-          <h3>Lorem ipsum dolor sit amet.</h3>
-          <img src={article} alt="" />
+          <h3>{articleDetails.title}</h3>
+          <img src={`http://localhost:4000/${articleDetails.image}`} alt="" />
           <br />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-            aliquid facere tempore ut, in dolor vel doloribus, deleniti
-            inventore cupiditate sint eos provident enim dicta consequuntur qui
-            obcaecati quidem non. Vero sint, quos culpa maiores nobis fuga et
-            placeat molestiae aliquid neque qui excepturi maxime ab corrupti
-            incidunt ipsam officiis voluptatem ut voluptas saepe numquam, vitae
-            natus, possimus perspiciatis. Nulla error modi, odio saepe quo
-            voluptatibus non, unde aliquid minus nihil enim dolorem tempore,
-            consequuntur ipsa eveniet tenetur quia explicabo velit eaque fuga
-            quos quaerat ab facilis minima? Temporibus nesciunt voluptatem,
-            reprehenderit fugit eveniet quia, error quos saepe tenetur aliquid
-            aliquam nemo dicta pariatur omnis impedit velit, suscipit architecto
-            accusantium alias exercitationem dolor dolore! Assumenda neque
-            delectus eos eius architecto voluptas atque rerum corporis, ex
-            voluptate inventore eligendi dolore, dolores error, pariatur nobis
-            porro quibusdam deleniti omnis vero et est! Repudiandae veritatis
-            enim exercitationem dolor labore laborum soluta quidem beatae sit.
-            Numquam soluta error sapiente dolore laudantium veniam, quaerat nisi
-            eaque recusandae est totam qui aliquam earum eos. Fugit quia,
-            consequuntur animi amet odio delectus quis dolorem eos neque! Quo a
-            vero ut quia ipsa maxime, obcaecati sequi dignissimos! Qui omnis,
-            blanditiis vel corporis adipisci culpa facilis labore, sed
-            voluptatibus est perspiciatis reiciendis exercitationem maxime
-            accusamus voluptatem quo odit provident aperiam! Repudiandae ipsam
-            assumenda numquam voluptatibus consectetur animi eum! Praesentium
-            ducimus veniam minus harum fugit. Tenetur quibusdam molestiae
-            officiis distinctio. Omnis voluptatem quia iste non. Cumque, at
-            inventore aperiam, eum dolorem sed provident ea ullam eligendi
-            officia fugiat sapiente suscipit iure deleniti temporibus assumenda
-            quas? Unde, illo? Maiores, rem! Laboriosam repudiandae error vero
-            possimus natus praesentium aspernatur saepe obcaecati maiores
-            quibusdam optio, debitis necessitatibus veritatis sequi pariatur est
-            soluta sunt, culpa esse aliquam distinctio eveniet! Architecto qui
-            numquam possimus blanditiis commodi quidem exercitationem quas
-            aspernatur error, ea dolore rem reiciendis labore officiis tenetur
-            quia laboriosam? Expedita quidem corrupti numquam, in eum quae neque
-            aliquam asperiores doloribus! Quas at eum architecto temporibus
-            reiciendis beatae, dolorem magnam officiis, labore error cumque
-            expedita nihil perspiciatis a maxime ab quos totam laborum, dolores
-            saepe reprehenderit aperiam obcaecati ad. Iste quidem ea beatae
-            veritatis consequatur natus corporis, officia molestiae, totam
-            voluptates similique sapiente illo ex consequuntur ratione nemo
-            aperiam soluta ipsam! Nihil omnis iure molestias neque quia
-            inventore repudiandae, corrupti fugiat cum, alias excepturi in
-            corporis voluptas. Omnis, nam. Odit maiores rerum velit ea
-            perferendis, obcaecati illo corrupti! Beatae aperiam id pariatur
-            voluptas non doloribus vel ipsum vitae dolor ea dolore quidem, optio
-            quod ratione debitis alias, at nobis maiores quibusdam veritatis
-            totam modi reprehenderit consequuntur? Debitis nesciunt autem
-            veritatis voluptatum id atque at minus, laboriosam cum ratione,
-            cupiditate officia deleniti iure pariatur ab quisquam quam fugiat
-            neque maiores vitae ad eos natus consequuntur illo. Ut quibusdam,
-            accusamus amet est dolorem, libero excepturi reprehenderit
-            accusantium earum totam magni voluptatem officia perspiciatis
-            pariatur eos ad repudiandae iusto quisquam exercitationem id
-            laudantium quasi minus sunt ea! Perferendis, maiores commodi! Nulla,
-            adipisci quos. Velit aut earum dolores nihil eos vitae omnis autem
-            nisi, quos, accusamus est temporibus provident.
-          </p>
+          <div className="sht_desc">
+            <p>Published Date: {formatDate(articleDetails.date)}</p>
+            <p>Category: {articleDetails.category}</p>
+            <p>Posted By: {articleDetails.writtenBy}</p>
+          </div>
+          {/* <div class="sharethis-inline-share-buttons">
+            <script
+              type="text/javascript"
+              src="https://platform-api.sharethis.com/js/sharethis.js#property=67b22c0b3c04610012ab7068&product=inline-share-buttons"
+              async="async"
+            ></script>
+          </div> */}
+
+          <script
+            src="https://static.elfsight.com/platform/platform.js"
+            async
+          ></script>
+          <div
+            class="elfsight-app-ad0f6c27-259e-4828-9406-86f99f710a7a"
+            data-elfsight-app-lazy
+          ></div>
+          <div className="article_desc">
+            <p>{articleDetails.description}</p>
+          </div>
         </div>
         {/*  */}
         <div className="advertisment_container">
-          <div className="youtube_video">Youtube Video</div>
+          <div className="youtube_video">
+            <iframe
+              src="https://www.youtube.com/embed/K65DEXrR9As"
+              title="MUST Know Important Laws of India!"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
           <div className="channel_sec">
             <div className="channel_container">
               <img src={youtube} alt="" />
               <div className="channel_name">
-                <h3 className=" text-black">Youtube Channel Name</h3>
+                <h3 className=" text-black">Law Society</h3>
                 <h6>For Video Content Subscribe Us On Youtube</h6>
               </div>
             </div>

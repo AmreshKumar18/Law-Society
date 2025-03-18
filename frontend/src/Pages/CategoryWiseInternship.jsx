@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Free from "../Assets/Free.jpg";
 import NGO from "../Assets/NGO.jpg";
 import clock from "../Assets/clock.png";
 import WhatsApp from "../Assets/WhatsApp.jpg";
 import Career from "../Assets/Career.jpg";
 import { Link } from "react-router-dom";
-import { UserData } from "../UserContext";
 
-const Careers = () => {
-  const { internship } = UserData();
-  // console.log(internship);
+const CategoryWiseInternship = () => {
+  const { category } = useParams(); // Get the category from the URL
+  const [internships, setInternships] = useState([]);
+
+  useEffect(() => {
+    // Fetch internships for the specified category
+    const fetchInternships = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:4000/api/internships/category/${category}`
+        );
+        const data = await response.json();
+        setInternships(data);
+        console.log(data);
+      } catch (error) {
+        console.error("Error fetching internships:", error);
+      }
+    };
+
+    fetchInternships();
+  }, [category]);
+
   const formatDate = (isoString) => {
     if (!isoString) return "";
     const dateObj = new Date(isoString);
@@ -19,11 +38,27 @@ const Careers = () => {
       year: "numeric",
     });
   };
+
   return (
     <>
-      <div className="section internship_container">
+      {/* <div>
+        <h1>{decodeURIComponent(category)} Internships</h1>
+        {internships.map((internship) => (
+          <div key={internship._id}>
+            <h2>{internship.title}</h2>
+            <p>{internship.company}</p>
+            <p>{internship.description}</p>
+          </div>
+        ))}
+      </div> */}
+      <div className="section">
+        <h1 className=" text-black">
+          {decodeURIComponent(category)} Internships
+        </h1>
+      </div>
+      <div className=" category_internship_container">
         <div className="internshipdetails_sec">
-          {internship.map((item) => (
+          {internships.map((item) => (
             <Link to={`/internship/details/${item._id}`}>
               <div className="internship_sec">
                 <div className="internship_img">
@@ -55,4 +90,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default CategoryWiseInternship;

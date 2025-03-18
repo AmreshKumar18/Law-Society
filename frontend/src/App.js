@@ -13,6 +13,7 @@ import BlogDetails from "./Pages/BlogDetails";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import InternshipDetails from "./Pages/InternshipDetails";
+import CategoryWiseInternship from "./Pages/CategoryWiseInternship";
 
 function App() {
   const router = createBrowserRouter([
@@ -49,7 +50,7 @@ function App() {
           element: <Contact />,
         },
         {
-          path: "/articles/details",
+          path: "/articles/details/:id",
           element: <ArticleDetails />,
         },
         {
@@ -57,7 +58,11 @@ function App() {
           element: <BlogDetails />,
         },
         {
-          path: "/internship/details",
+          path: "/internships/category/:category",
+          element: <CategoryWiseInternship />,
+        },
+        {
+          path: "/internship/details/:id",
           element: <InternshipDetails />,
         },
         {

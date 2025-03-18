@@ -7,9 +7,7 @@ import FAQ from "../Components/FAQ";
 const About = () => {
   return (
     <>
-      <div className="abt_container section">
-        <h3 className=" text-center text-white">About Us</h3>
-      </div>
+      <div className="abt_container section"></div>
       <div className="abt_header">
         <div className="abt_header_right">
           <img src={about} alt="" />

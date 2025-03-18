@@ -11,10 +11,6 @@ const Articles = () => {
         </div>
         <div className="article_card">
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </div>
       </div>
     </>
