@@ -6,7 +6,7 @@ const Articles = () => {
     <>
       <div className="section article_container">
         <h3>All Articles Collection</h3>
-        <div className="input_search">
+        <div className="search_box">
           <input type="search" placeholder="Search Article Here..." />
         </div>
         <div className="article_card">
