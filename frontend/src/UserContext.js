@@ -11,7 +11,7 @@ export const UserContextProvider = ({ children }) => {
   async function loginUser(email, password) {
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/login/user",
+        "https://law-society-backend.onrender.com/api/login/user",
         {
           email,
           password,
@@ -42,11 +42,14 @@ export const UserContextProvider = ({ children }) => {
   // create new account
   async function newUser(fullname, email, password) {
     try {
-      const res = await axios.post("http://localhost:4000/api/create/user", {
-        fullname,
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://law-society-backend.onrender.com/api/create/user",
+        {
+          fullname,
+          email,
+          password,
+        }
+      );
       if (res.data) {
         toast.success("Account Created Successfully");
       }
@@ -67,7 +70,7 @@ export const UserContextProvider = ({ children }) => {
   async function contact(fullname, mob_number, email, subject, message) {
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/contact",
+        "https://law-society-backend.onrender.com/api/contact",
         {
           fullname,
           mob_number,
@@ -91,7 +94,9 @@ export const UserContextProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
   const getAllArticles = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/all/articles");
+      const res = await axios.get(
+        "https://law-society-backend.onrender.com/api/all/articles"
+      );
       setArticles(res.data);
       // console.log(res.data);
     } catch (error) {
@@ -107,7 +112,9 @@ export const UserContextProvider = ({ children }) => {
   const [internship, setInternship] = useState([]);
   const getAllInternships = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/all/internship");
+      const res = await axios.get(
+        "https://law-society-backend.onrender.com/api/all/internship"
+      );
       setInternship(res.data);
     } catch (error) {
       toast.error(error.response?.data?.message);

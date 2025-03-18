@@ -9,7 +9,10 @@ const Card = () => {
     <>
       {articles.map((item) => (
         <div className="article_section">
-          <img src={`http://localhost:4000/${item.image}`} alt="" />
+          <img
+            src={`https://law-society-backend.onrender.com/${item.image}`}
+            alt=""
+          />
           <div className=" flex justify-between px-3">
             <div className="badge badge-primary">{item.category}</div>
             <div className="badge badge-secondary">{item.writtenBy}</div>

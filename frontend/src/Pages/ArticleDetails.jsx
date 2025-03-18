@@ -9,7 +9,7 @@ const ArticleDetails = () => {
   const { id } = useParams();
   const getArticleDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/articles/${id}`);
+      const res = await axios.get(`https://law-society-backend.onrender.com/api/articles/${id}`);
       setArticleDetails(res.data);
       console.log(res.data);
     } catch (error) {

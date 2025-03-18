@@ -16,7 +16,7 @@ const CategoryWiseInternship = () => {
     const fetchInternships = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/api/internships/category/${category}`
+          `https://law-society-backend.onrender.com/api/internships/category/${category}`
         );
         const data = await response.json();
         setInternships(data);
