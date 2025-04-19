@@ -27,6 +27,14 @@ app.use("/api", ArticleRouter, ContactRouter, InternshipRouter, UserRouter);
 // upload image
 app.use("/uploads", express.static("uploads"));
 
+// static folder set kar (ye tera frontend build serve karega)
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+
+// yeh saare unknown routes ko React ke index.html bhej dega
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
