@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { UserData } from "../UserContext";
+import { useNavigate } from "react-router-dom";
 
 const ArticleDetails = () => {
   const { user } = UserData();
+  const navigate = useNavigate();
   const [articleDetails, setArticleDetails] = useState([]);
   const { id } = useParams();
   const getArticleDetails = async () => {
