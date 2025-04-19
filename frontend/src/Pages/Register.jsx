@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import login_img from "../Assets/login_img.png";
-import logo from "../Assets/icon.png";
+import logo from "../Assets/logo_bg.jpg";
 import { UserData } from "../UserContext";
 import { useForm } from "react-hook-form";
 

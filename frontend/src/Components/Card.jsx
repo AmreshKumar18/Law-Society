@@ -4,26 +4,41 @@ import { UserData } from "../UserContext";
 
 const Card = () => {
   const { articles } = UserData();
-  // console.log(articles);
+
   return (
-    <>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
       {articles.map((item) => (
-        <div className="article_section">
+        <div
+          key={item._id}
+          className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+        >
           <img
             src={`https://law-society-backend.onrender.com/${item.image}`}
-            alt=""
+            alt={item.title}
+            className="w-full h-48 object-cover"
           />
-          <div className=" flex justify-between px-3">
-            <div className="badge badge-primary">{item.category}</div>
-            <div className="badge badge-secondary">{item.writtenBy}</div>
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-2 text-sm">
+              <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                {item.category}
+              </span>
+              <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">
+                {item.writtenBy}
+              </span>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">
+              {item.title}
+            </h3>
+            <Link
+              to={`/articles/details/${item._id}`}
+              className="inline-block text-sm text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition-colors duration-200"
+            >
+              Read More
+            </Link>
           </div>
-          <h5 className=" text-center">{item.title}</h5>
-          <Link to={`/articles/details/${item._id}`}>
-            <div className=" readmorebtn">Read More</div>
-          </Link>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
