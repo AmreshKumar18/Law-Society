@@ -70,8 +70,9 @@ export const updateArticle = async (req, res) => {
     article.writtenBy = req.body.writtenBy || article.writtenBy;
 
     if (req.file) {
-      article.image = req.file.filename; 
+      article.image = req.file.filename;
     }
+    
 
     await article.save();
 

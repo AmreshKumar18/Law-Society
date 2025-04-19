@@ -45,7 +45,7 @@ const ArticleDetails = () => {
         }
       );
       toast.success("Article deleted successfully");
-      window.location.href = "/articles";
+      // window.location.href = "/articles";
     } catch (error) {
       toast.error(error.response?.data?.message || "Delete failed");
     }
