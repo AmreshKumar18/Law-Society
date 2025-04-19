@@ -14,12 +14,10 @@ export const addArticle = async (req, res) => {
     const savedArticle = await newArticle.save();
     res.status(200).json({ message: "New Article Added", savedArticle });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "error while adding new article",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "error while adding new article",
+      error: error.message,
+    });
   }
 };
 
@@ -44,19 +42,42 @@ export const getSingleArticles = async (req, res) => {
   }
 };
 
+// export const updateArticle = async (req, res) => {
+//   try {
+//     const updatedArticle = await Articles.findByIdAndUpdate(
+//       req.params.id,
+//       req.body,
+//       { new: true }
+//     );
+//     if (!updatedArticle) {
+//       return res.status(404).json({ error: "Article not found" });
+//     }
+//     res.status(200).json(updatedArticle);
+//   } catch (err) {
+//     res.status(400).json({ error: err.message });
+//   }
+// };
+
 export const updateArticle = async (req, res) => {
   try {
-    const updatedArticle = await Articles.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedArticle) {
-      return res.status(404).json({ error: "Article not found" });
+    const article = await Articles.findById(req.params.id);
+    if (!article) return res.status(404).json({ msg: "Article not found" });
+
+    article.title = req.body.title || article.title;
+    article.category = req.body.category || article.category;
+    article.description = req.body.description || article.description;
+    article.date = req.body.date || article.date;
+    article.writtenBy = req.body.writtenBy || article.writtenBy;
+
+    if (req.file) {
+      article.image = req.file.filename; 
     }
-    res.status(200).json(updatedArticle);
+
+    await article.save();
+
+    res.status(200).json({ msg: "Article updated successfully", article });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ msg: "Server Error", error: err.message });
   }
 };
 

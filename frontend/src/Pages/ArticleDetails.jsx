@@ -3,15 +3,18 @@ import youtube from "../Assets/youtube.png";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { UserData } from "../UserContext";
 
 const ArticleDetails = () => {
+  const { user } = UserData();
   const [articleDetails, setArticleDetails] = useState([]);
   const { id } = useParams();
   const getArticleDetails = async () => {
     try {
-      const res = await axios.get(`https://law-society-backend.onrender.com/api/articles/${id}`);
+      const res = await axios.get(
+        `https://law-society-backend.onrender.com/api/articles/${id}`
+      );
       setArticleDetails(res.data);
-      console.log(res.data);
     } catch (error) {
       toast.error(error.response?.data?.message);
     }
@@ -28,6 +31,25 @@ const ArticleDetails = () => {
       month: "2-digit",
       year: "numeric",
     });
+  };
+
+  //
+  const deleteArticle = async () => {
+    try {
+      await axios.delete(`http://localhost:4000/api/articles/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      toast.success("Article deleted successfully");
+      window.location.href = "/articles";
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Delete failed");
+    }
+  };
+
+  const updateArticle = () => {
+    window.location.href = `/edit-article/${id}`; // edit page bana le
   };
 
   return (
@@ -61,6 +83,58 @@ const ArticleDetails = () => {
           <div className="article_desc">
             <p>{articleDetails.description}</p>
           </div>
+          {user.user?.role === "admin" ? (
+            <>
+              <div
+                className=" flex items-center cursor-pointer"
+                onClick={updateArticle}
+              >
+                <svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                  />
+                </svg>
+                Update Article
+              </div>
+              <div
+                className=" flex items-center cursor-pointer mt-2"
+                onClick={deleteArticle}
+              >
+                <svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+                  />
+                </svg>
+                Delete Article
+              </div>
+            </>
+          ) : (
+            <p>not admin</p>
+          )}
         </div>
         {/*  */}
         <div className="advertisment_container">

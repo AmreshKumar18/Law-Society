@@ -6,7 +6,7 @@ const ArticleSchema = new mongoose.Schema({
   category: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },
-  writtenBy: { type: String, required: true },
+  writtenBy: { type: String, required: false },
 });
 
 export const Articles = mongoose.model("Articles", ArticleSchema);

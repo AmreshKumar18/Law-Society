@@ -594,7 +594,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
   padding: 10px;
 }
 
@@ -642,6 +642,95 @@ input:focus {
   margin-top: 80px;
   margin-bottom: 20px;
 }
+
+.article_container_top {
+  display: flex;
+  align-items: center;
+}
+
+.add_art_btn {
+  display: flex;
+  width: fit-content;
+  cursor: pointer;
+  background-color: #ccc;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: black;
+}
+
+/* styles/AddArticle.css */
+
+.article-form-container {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 30px 25px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.article-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+}
+
+.article-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.article-form input[type="text"],
+.article-form input[type="date"],
+.article-form textarea,
+.article-form input[type="file"] {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+.article-form input:focus,
+.article-form textarea:focus {
+  border: 1px solid #4a90e2;
+  outline: none;
+}
+
+.article-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.article-form button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.article-form button:hover {
+  background-color: #3a78c2;
+}
+
+@media (max-width: 600px) {
+  .article-form-container {
+    padding: 20px 15px;
+  }
+
+  .article-form input,
+  .article-form textarea,
+  .article-form button {
+    font-size: 15px;
+  }
+}
+
 
 /* .article_section {
   width: 300px;
