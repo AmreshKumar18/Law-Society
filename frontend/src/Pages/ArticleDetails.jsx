@@ -45,15 +45,14 @@ const ArticleDetails = () => {
         }
       );
       toast.success("Article deleted successfully");
-      window.location.href =
-        "https://law-society-backend.onrender.com/api/all/articles";
+      navigate("/articles");
     } catch (error) {
       toast.error(error.response?.data?.message || "Delete failed");
     }
   };
 
   const updateArticle = () => {
-    window.location.href = `https://law-society-backend.onrender.com/api/articles/${id}`; // edit page bana le
+    navigate(`/edit-article/${id}`); // edit page bana le
   };
 
   return (
