@@ -24,7 +24,7 @@ const EditArticle = () => {
     // Fetch existing article data
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/articles/${id}`);
+        const res = await axios.get(`https://law-society-backend.onrender.com/api/articles/${id}`);
         // console.log(res.data);
         const article = res.data;
 
@@ -68,7 +68,7 @@ const EditArticle = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:4000/api/articles/${id}`,
+        `https://law-society-backend.onrender.com/api/articles/${id}`,
         data,
         {
           headers: {

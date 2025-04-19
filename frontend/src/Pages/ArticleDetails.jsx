@@ -36,11 +36,14 @@ const ArticleDetails = () => {
   //
   const deleteArticle = async () => {
     try {
-      await axios.delete(`http://localhost:4000/api/articles/${id}`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      await axios.delete(
+        `https://law-society-backend.onrender.com/api/articles/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       toast.success("Article deleted successfully");
       window.location.href = "/articles";
     } catch (error) {
@@ -57,7 +60,10 @@ const ArticleDetails = () => {
       <div className="section articlesdetails_container">
         <div className="articlesdetails_sec">
           <h3>{articleDetails.title}</h3>
-          <img src={`http://localhost:4000/${articleDetails.image}`} alt="" />
+          <img
+            src={`https://law-society-backend.onrender.com/${articleDetails.image}`}
+            alt=""
+          />
           <br />
           <div className="sht_desc">
             <p>Published Date: {formatDate(articleDetails.date)}</p>

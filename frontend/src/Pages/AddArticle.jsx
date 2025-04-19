@@ -46,7 +46,7 @@ const AddArticle = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/new/article",
+        "https://law-society-backend.onrender.com/api/new/article",
         data,
         {
           headers: {
