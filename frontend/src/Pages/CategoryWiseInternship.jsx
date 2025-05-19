@@ -51,17 +51,15 @@ const CategoryWiseInternship = () => {
           </div>
         ))}
       </div> */}
-      <div className="section">
-        <h1 className=" text-black">
-          {decodeURIComponent(category)} Internships
-        </h1>
+      <div className="categorywise_section">
+        <h1 className=" text-black">{decodeURIComponent(category)}</h1>
       </div>
       <div className=" category_internship_container">
-        <div className="internshipdetails_sec">
+        <div className="internshipsdetails_sec">
           {internships.map((item) => (
             <Link to={`/internship/details/${item._id}`}>
               <div className="internship_sec">
-                <div className="internship_img">
+                <div className="internships_img">
                   <img src={NGO} alt="" />
                 </div>
                 <div className="internship_title">
