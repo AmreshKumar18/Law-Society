@@ -7,6 +7,7 @@ const Navbar = () => {
   const { isAuth, logoutUser } = UserData();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const handleLogout = () => {
     logoutUser();
@@ -16,11 +17,17 @@ const Navbar = () => {
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+
   const closeNavbar = () => {
     setIsOpen(false);
+    setActiveDropdown(null);
   };
 
-  const categories = [
+  const toggleDropdown = (dropdownName) => {
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+  };
+
+  const internshipCategories = [
     "Government Internship",
     "Paid Legal Internship",
     "Online Internship",
@@ -30,169 +37,274 @@ const Navbar = () => {
     "Corporate Internship",
     "Internship Guide",
   ];
+
+  const jobCategories = [
+    "Government Job",
+    "Law Firm Job",
+    "College Job",
+    "Legal Job",
+  ];
+
+  const resourceCategories = ["Legal Draft", "Career Guide", "Legal News"];
+
+  const opportunityCategories = [
+    "Call for Blog and Articles",
+    "Essay Competitions",
+    "Call for Paper",
+    "Moot Court Competitions",
+    "Webinar",
+    "Conference",
+  ];
+
   return (
-    <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          {/* Logo */}
-          <div className="navbar-logo">
-            <Link to="/">
-              <img src={logo} alt="" />
-            </Link>
-          </div>
-
-          {/* Toggle Button for Small Screens */}
-          <div className="navbar-toggle" onClick={toggleNavbar}>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </div>
-
-          {/* Navigation Links */}
-          <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-            <Link to="/" onClick={closeNavbar}>
-              Home
-            </Link>
-            <Link to="/about" onClick={closeNavbar}>
-              About
-            </Link>
-            <Link to="/articles" onClick={closeNavbar}>
-              Articles
-            </Link>
-
-            {/* internship Dropdown */}
-            <div className="dropdown">
-              <Link
-                to="/internships"
-                onClick={closeNavbar}
-                className="dropdown-toggle"
-              >
-                Internships <span className="arrow">&#9660;</span>
-              </Link>
-              <div className="dropdown-menu">
-                {/* <Link onClick={closeNavbar}>GOVERNMENT INTERNSHIP</Link>
-                <Link onClick={closeNavbar}>PAID LEGAL INTERNSHIP</Link>
-                <Link onClick={closeNavbar}>ONLINE INTERNSHIP</Link>
-                <Link onClick={closeNavbar}>NGO INTERNSHIP</Link>
-                <Link onClick={closeNavbar}>INTERNSHIP WITH ADVOCATE</Link>
-                <Link onClick={closeNavbar}>INTERNSHIP WITH LAW FIRM</Link>
-                <Link onClick={closeNavbar}>CORPORATE INTERNSHIP</Link>
-                <Link onClick={closeNavbar}>INTERNSHIP GUIDE</Link> */}
-                {categories.map((category, index) => (
-                  <Link
-                    key={index}
-                    to={`/internships/category/${encodeURIComponent(category)}`}
-                    onClick={closeNavbar}
-                  >
-                    {category}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            {/* jobs dropdown */}
-            <div className="dropdown">
-              <Link
-                to="/internship"
-                onClick={closeNavbar}
-                className="dropdown-toggle"
-              >
-                Jobs <span className="arrow">&#9660;</span>
-              </Link>
-              <div className="dropdown-menu">
-                <Link onClick={closeNavbar}>GOVERNMENT JOB</Link>
-                <Link onClick={closeNavbar}>LAW FIRM JOB</Link>
-                <Link onClick={closeNavbar}>COLLEGE JOB </Link>
-                <Link onClick={closeNavbar}>LEGAL JOB</Link>
-              </div>
-            </div>
-            {/* resources dropdown */}
-            <div className="dropdown">
-              <Link
-                to="/internship"
-                onClick={closeNavbar}
-                className="dropdown-toggle"
-              >
-                Resources <span className="arrow">&#9660;</span>
-              </Link>
-              <div className="dropdown-menu">
-                <Link onClick={closeNavbar}>LEGAL DRAFT</Link>
-                <Link onClick={closeNavbar}>CAREER GUIDE</Link>
-                <Link onClick={closeNavbar}>LEGAL NEWS </Link>
-              </div>
-            </div>
-            {/* opportunities */}
-            <div className="dropdown">
-              <Link
-                to="/internships"
-                onClick={closeNavbar}
-                className="dropdown-toggle"
-              >
-                Opportunities <span className="arrow">&#9660;</span>
-              </Link>
-              <div className="dropdown-menu">
-                <Link onClick={closeNavbar}>CALL FOR BLOG AND ARTICLES</Link>
-                <Link onClick={closeNavbar}>ESSAY COMPETETIONS</Link>
-                <Link onClick={closeNavbar}>CALL FOR PAPER</Link>
-                <Link onClick={closeNavbar}>MOOT COURT COMPETETIONS</Link>
-                <Link onClick={closeNavbar}>WEBINAR</Link>
-                <Link onClick={closeNavbar}>CONFERENCE</Link>
-              </div>
-            </div>
-            <Link to="/contact" onClick={closeNavbar}>
-              Contact
-            </Link>
-          </div>
-          {/* login btn */}
-          {isAuth ? (
-            <Link to="/login">
-              <button className=" btns_logout" onClick={handleLogout}>
-                Logout{" "}
-                <svg
-                  class="w-6 h-6 text-gray-800 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"
-                  />
-                </svg>
-              </button>
-            </Link>
-          ) : (
-            <Link to="/login">
-              <button className=" btns">
-                Login{" "}
-                <svg
-                  class="w-6 h-6 text-gray-800 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 14v3m4-6V7a3 3 0 1 1 6 0v4M5 11h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"
-                  />
-                </svg>
-              </button>
-            </Link>
-          )}
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <div className="navbar-logo">
+          <Link to="/">
+            <img src={logo} alt="Law Society Logo" />
+          </Link>
         </div>
-      </nav>
-    </>
+        <div className="navbar-spacer"></div>
+        {/* Toggle Button for Mobile */}
+        <div
+          className={`navbar-toggle ${isOpen ? "active" : ""}`}
+          onClick={toggleNavbar}
+        >
+          <span className="icon-bar"></span>
+          <span className="icon-bar"></span>
+          <span className="icon-bar"></span>
+        </div>
+
+        {/* Navigation Links with Auth Button */}
+        <div className={`navbar-links ${isOpen ? "active" : ""}`}>
+          <Link to="/" className="nav-link" onClick={closeNavbar}>
+            Home
+          </Link>
+          <Link to="/about" className="nav-link" onClick={closeNavbar}>
+            About
+          </Link>
+          <Link to="/articles" className="nav-link" onClick={closeNavbar}>
+            Articles
+          </Link>
+
+          {/* Internships Dropdown */}
+          <div
+            className={`dropdown ${
+              activeDropdown === "internships" ? "active" : ""
+            }`}
+          >
+            <button
+              className="dropdown-toggle nav-link"
+              onClick={() => toggleDropdown("internships")}
+            >
+              Internships{" "}
+              <span className="arrow">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div className="dropdown-menu">
+              {internshipCategories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={`/internships/category/${encodeURIComponent(category)}`}
+                  className="dropdown-item"
+                  onClick={closeNavbar}
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Jobs Dropdown */}
+          <div
+            className={`dropdown ${activeDropdown === "jobs" ? "active" : ""}`}
+          >
+            <button
+              className="dropdown-toggle nav-link"
+              onClick={() => toggleDropdown("jobs")}
+            >
+              Jobs{" "}
+              <span className="arrow">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div className="dropdown-menu">
+              {jobCategories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={`/jobs/category/${encodeURIComponent(category)}`}
+                  className="dropdown-item"
+                  onClick={closeNavbar}
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Resources Dropdown */}
+          <div
+            className={`dropdown ${
+              activeDropdown === "resources" ? "active" : ""
+            }`}
+          >
+            <button
+              className="dropdown-toggle nav-link"
+              onClick={() => toggleDropdown("resources")}
+            >
+              Resources{" "}
+              <span className="arrow">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div className="dropdown-menu">
+              {resourceCategories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={`/resources/category/${encodeURIComponent(category)}`}
+                  className="dropdown-item"
+                  onClick={closeNavbar}
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Opportunities Dropdown */}
+          <div
+            className={`dropdown ${
+              activeDropdown === "opportunities" ? "active" : ""
+            }`}
+          >
+            <button
+              className="dropdown-toggle nav-link"
+              onClick={() => toggleDropdown("opportunities")}
+            >
+              Opportunities{" "}
+              <span className="arrow">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div className="dropdown-menu">
+              {opportunityCategories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={`/opportunities/category/${encodeURIComponent(category)}`}
+                  className="dropdown-item"
+                  onClick={closeNavbar}
+                >
+                  {category}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link to="/contact" className="nav-link" onClick={closeNavbar}>
+            Contact
+          </Link>
+          <div className="navbar-spacer"></div>
+
+          {/* Auth Button - Now properly aligned */}
+          <div className="auth-section">
+            {isAuth ? (
+              <div className="profile-dropdown">
+                <button className="profile-button">
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    alt="Profile"
+                  />
+                </button>
+                <div className="dropdown-content">
+                  <button onClick={() => navigate("/profile")}>
+                    <span>My Profile</span>
+                  </button>
+                  <button onClick={() => navigate("/saved")}>
+                    <span>Saved Internships</span>
+                  </button>
+                  <button onClick={handleLogout}>
+                    <span>Logout</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="btn-login">
+                  Login
+                  <svg className="icon" viewBox="0 0 24 24">
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14v3m4-6V7a3 3 0 1 1 6 0v4M5 11h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 
