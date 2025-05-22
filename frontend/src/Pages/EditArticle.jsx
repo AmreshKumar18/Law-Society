@@ -3,12 +3,17 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { UserData } from "../UserContext";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
+import DOMPurify from "dompurify";
 
 const EditArticle = () => {
   const { id } = useParams(); // article ID from route
   const { user } = UserData();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
@@ -24,7 +29,9 @@ const EditArticle = () => {
     // Fetch existing article data
     const fetchData = async () => {
       try {
-        const res = await axios.get(`https://law-society-backend.onrender.com/api/articles/${id}`);
+        const res = await axios.get(
+          `https://law-society-backend.onrender.com/api/articles/${id}`
+        );
         // console.log(res.data);
         const article = res.data;
 
@@ -56,11 +63,11 @@ const EditArticle = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const sanitizedDescription = DOMPurify.sanitize(formData.description);
     const data = new FormData();
     data.append("title", formData.title);
     data.append("category", formData.category);
-    data.append("description", formData.description);
+    data.append("description", sanitizedDescription);
     data.append("date", formData.date);
     data.append("writtenBy", formData.writtenBy);
 
@@ -114,12 +121,25 @@ const EditArticle = () => {
           onChange={handleChange}
           required
         />
-        <textarea
-          name="description"
-          placeholder="Description"
+        <ReactQuill
+          theme="snow"
           value={formData.description}
-          onChange={handleChange}
-          required
+          onChange={(value) =>
+            setFormData((prev) => ({
+              ...prev,
+              description: value,
+            }))
+          }
+          // modules={{
+          //   toolbar: [
+          //     [{ header: [1, 2, 3, false] }],
+          //     ["bold", "italic", "underline"],
+          //     [{ list: "ordered" }, { list: "bullet" }],
+          //     ["link"],
+          //     ["clean"],
+          //   ],
+          // }}
+          placeholder="Write your article here..."
         />
         <input
           type="date"

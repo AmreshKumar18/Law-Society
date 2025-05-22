@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import login_img from "../Assets/login_img.png";
 import logo from "../Assets/logo_bg.jpg";
@@ -18,6 +18,9 @@ const Register = () => {
     await newUser(data.fullname, data.email, data.password);
     // navigate("/login");
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="section">

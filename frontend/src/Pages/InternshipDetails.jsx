@@ -13,9 +13,14 @@ import axios from "axios";
 const InternshipDetails = () => {
   const [internshipDetails, setInternshipDetails] = useState([]);
   const { id } = useParams();
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   const getInternshipDetails = async () => {
     try {
-      const res = await axios.get(`https://law-society-backend.onrender.com/api/internship/${id}`);
+      const res = await axios.get(
+        `https://law-society-backend.onrender.com/api/internship/${id}`
+      );
       console.log(res.data);
       setInternshipDetails(res.data);
     } catch (error) {
@@ -89,11 +94,11 @@ const InternshipDetails = () => {
           </div>
         </div>
         {/*  */}
-        <div className="group_container">
+        {/* <div className="group_container">
           <img src={Free} alt="" />
           <img src={WhatsApp} alt="" />
           <img src={Career} alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );

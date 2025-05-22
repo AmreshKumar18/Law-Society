@@ -11,6 +11,9 @@ const ArticleDetails = () => {
   const navigate = useNavigate();
   const [articleDetails, setArticleDetails] = useState([]);
   const { id } = useParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getArticleDetails = async () => {
     try {
@@ -133,7 +136,7 @@ const ArticleDetails = () => {
         </div>
 
         {/* Right column - advertisement */}
-        <div className="advertisment_container">
+        {/* <div className="advertisment_container">
           <div className="youtube_video">
             <iframe
               src="https://www.youtube.com/embed/K65DEXrR9As"
@@ -177,7 +180,7 @@ const ArticleDetails = () => {
           </div>
 
           <div className="ads_container">Advertisement</div>
-        </div>
+        </div> */}
       </div>
     </>
   );

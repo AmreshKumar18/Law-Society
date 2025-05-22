@@ -543,12 +543,19 @@ input:focus {
 
 .add_art_btn {
   display: flex;
-  width: fit-content;
+  justify-content: space-between;
+  width: 140px;
   cursor: pointer;
-  background-color: #ccc;
   padding: 8px 10px;
   border-radius: 10px;
+  background-color: rgb(52, 238, 52);
+  align-items: center;
+}
+
+.add_art_btn>p {
+  width: fit-content;
   color: black;
+  font-weight: 500;
 }
 
 /* styles/AddArticle.css */
@@ -673,6 +680,23 @@ input:focus {
     margin-left: auto;
     margin-right: auto;
   }
+
+  .add_art_btn {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: rgb(52, 238, 52);
+    align-items: center;
+  }
+
+  .add_art_btn>p {
+    width: fit-content;
+    color: black;
+    font-weight: 500;
+  }
 }
 
 
@@ -789,7 +813,7 @@ input:focus {
 }
 
 .articlesdetails_sec>img {
-  height: 50vh;
+  height: 450px;
   width: 100%;
 }
 
@@ -1543,7 +1567,6 @@ h6 a:hover {
 @media (max-width: 992px) {
   .navbar-container {
     flex-direction: column;
-    align-items: flex-start;
   }
 
   .navbar-toggle {
@@ -1553,9 +1576,9 @@ h6 a:hover {
     right: 2rem;
   }
 
-  .navbar-links {
+  /* .navbar-links {
     flex-direction: column;
-    width: 100%;
+    width: 80vh;
     gap: 0;
     max-height: 0;
     overflow: hidden;
@@ -1563,19 +1586,33 @@ h6 a:hover {
     background-color: #34495e;
     margin-top: 1rem;
     border-radius: 0.5rem;
-  }
+  } */
 
   .navbar-links.active {
     max-height: 1000px;
     padding: 1rem;
   }
 
-  .nav-link,
+  /* .nav-link,
   .dropdown-toggle {
-    width: 100%;
+    width: 80vh;
     padding: 1rem;
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  } */
+
+  .navbar-links {
+    display: none;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    /* Or a max-height if animating */
   }
 
   .dropdown-menu {
@@ -1631,10 +1668,7 @@ h6 a:hover {
     padding: 1rem;
   }
 
-  .navbar-toggle {
-    right: 1rem;
-    top: 1.25rem;
-  }
+
 }
 
 
@@ -1818,6 +1852,23 @@ h6 a:hover {
   .faq_container {
     margin: 20px 0px;
     background-color: #454545;
+  }
+
+  .add_art_btn {
+    display: flex;
+    justify-content: space-between;
+    width: 125px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: rgb(52, 238, 52);
+    align-items: center;
+  }
+
+  .add_art_btn>p {
+    width: fit-content;
+    color: black;
+    font-weight: 500;
   }
 }
 
@@ -2106,10 +2157,6 @@ h6 a:hover {
   margin-right: 0px;
 }
 
-.sht_desc {
-  display: flex;
-  flex-direction: column;
-}
 
 .advertisment_container {
   margin-top: 40px;
@@ -2162,6 +2209,8 @@ h6 a:hover {
 .profile_data {
   line-height: 2rem;
 }
+
+
 
 @media only screen and (max-width: 720px) and (min-width: 480px) {
   .services {
@@ -2454,6 +2503,26 @@ h6 a:hover {
   .profile_data {
     line-height: 1.5rem;
   }
+
+  .sht_desc {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-links {
+    display: none;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+
+  .navbar-links.active {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    /* Or a max-height if animating */
+  }
+
 }
 
 
@@ -2513,6 +2582,26 @@ h6 a:hover {
   .mobile_no h6 {
     font-size: 1rem;
   }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 70vh;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #34495e;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .nav-link,
+  .dropdown-toggle {
+    width: 70vh;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* ===== BREAKPOINT: MOBILE (<= 480px) ===== */
@@ -2540,5 +2629,25 @@ h6 a:hover {
 
   .mobile_no h6 {
     font-size: 0.95rem;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    width: 50vh;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #34495e;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .nav-link,
+  .dropdown-toggle {
+    width: 50vh;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }

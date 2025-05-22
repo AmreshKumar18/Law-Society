@@ -13,6 +13,9 @@ const Articles = () => {
   const handleAddArticle = () => {
     navigate("/add-article");
   };
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   return (
     <>
       <div className="section article_container">

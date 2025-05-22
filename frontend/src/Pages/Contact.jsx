@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import mobile from "../Assets/mobile.png";
 import email from "../Assets/email.png";
 import call from "../Assets/call.jpg";
@@ -24,6 +24,9 @@ const Contact = () => {
     );
     reset();
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="section">

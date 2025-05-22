@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import profile from "../Assets/profile.jpg";
 import { UserData } from "../UserContext";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,9 @@ const MyProfile = () => {
     logoutUser();
     navigate("/login");
   };
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   return (
     <>
       <div className="profile_container">

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import about from "../Assets/about.png";
 import Services from "../Components/Services";
 import Features from "../Components/Features";
 import FAQ from "../Components/FAQ";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className="abt_container section"></div>

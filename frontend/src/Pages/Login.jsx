@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import login_img from "../Assets/login_img.png";
 import logo from "../Assets/logo_bg.jpg";
@@ -18,6 +18,9 @@ const Login = () => {
     await loginUser(data.email, data.password);
     navigate("/");
   };
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 
   return (
     <>

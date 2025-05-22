@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -11,11 +11,17 @@ const AddArticle = () => {
   const navigate = useNavigate();
   const { user } = UserData();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const today = new Date().toISOString().split("T")[0];
+
   const [formData, setFormData] = useState({
     title: "",
     category: "",
     description: "",
-    date: "",
+    date: today,
     writtenBy: user.user?.fullname || "",
   });
 
@@ -36,15 +42,14 @@ const AddArticle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!image) return toast.error("Image is required bhai");
+    if (!image) return toast.error("Image is required");
 
-    // ✅ Sanitize description before submitting
     const sanitizedDescription = DOMPurify.sanitize(formData.description);
 
     const data = new FormData();
     data.append("title", formData.title);
     data.append("category", formData.category);
-    data.append("description", sanitizedDescription); // Use sanitized HTML
+    data.append("description", sanitizedDescription);
     data.append("date", formData.date);
     data.append("writtenBy", formData.writtenBy);
     data.append("image", image);
@@ -61,11 +66,11 @@ const AddArticle = () => {
         }
       );
 
-      toast.success("Article added successfully 🚀");
+      toast.success("Article added successfully");
       navigate("/articles");
     } catch (error) {
       console.error(error);
-      toast.error("Article upload failed 😡");
+      toast.error("Article upload failed");
     }
   };
 
@@ -100,18 +105,15 @@ const AddArticle = () => {
               description: value,
             }))
           }
-          // modules={{
-          //   toolbar: [
-          //     [{ header: [1, 2, 3, false] }],
-          //     ["bold", "italic", "underline"],
-          //     [{ list: "ordered" }, { list: "bullet" }],
-          //     ["link"],
-          //     ["clean"],
-          //   ],
-          // }}
           placeholder="Write your article here..."
         />
-        <input type="date" name="date" onChange={handleChange} required />
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
         <input
           type="file"
           accept="image/*"

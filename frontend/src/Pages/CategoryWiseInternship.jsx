@@ -10,7 +10,9 @@ import { Link } from "react-router-dom";
 const CategoryWiseInternship = () => {
   const { category } = useParams(); // Get the category from the URL
   const [internships, setInternships] = useState([]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     // Fetch internships for the specified category
     const fetchInternships = async () => {
@@ -78,11 +80,11 @@ const CategoryWiseInternship = () => {
           ))}
         </div>
         {/*  */}
-        <div className="group_container">
+        {/* <div className="group_container">
           <img src={Free} alt="" />
           <img src={WhatsApp} alt="" />
           <img src={Career} alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );
