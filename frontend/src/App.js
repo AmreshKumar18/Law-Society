@@ -16,6 +16,7 @@ import InternshipDetails from "./Pages/InternshipDetails";
 import CategoryWiseInternship from "./Pages/CategoryWiseInternship";
 import EditArticle from "./Pages/EditArticle";
 import AddArticle from "./Pages/AddArticle";
+import MyProfile from "./Pages/MyProfile";
 
 function App() {
   const router = createBrowserRouter([
@@ -72,8 +73,12 @@ function App() {
           element: <EditArticle />,
         },
         {
-          path: "add-article",
+          path: "/add-article",
           element: <AddArticle />,
+        },
+        {
+          path: "/my-profile",
+          element: <MyProfile />,
         },
         {
           path: "/login",

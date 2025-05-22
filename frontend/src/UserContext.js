@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const UserContext = createContext();
 
@@ -91,6 +92,7 @@ export const UserContextProvider = ({ children }) => {
   }
 
   // all articles
+
   const [articles, setArticles] = useState([]);
   const getAllArticles = async () => {
     try {
@@ -104,9 +106,9 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    getAllArticles();
-  }, []);
+  // useEffect(() => {
+  //   getAllArticles();
+  // }, [location.pathname]);
 
   // all internship
   const [internship, setInternship] = useState([]);
@@ -135,6 +137,7 @@ export const UserContextProvider = ({ children }) => {
         contact,
         articles,
         internship,
+        getAllArticles,
       }}
     >
       {children}

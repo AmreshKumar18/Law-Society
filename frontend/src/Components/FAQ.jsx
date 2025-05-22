@@ -7,7 +7,7 @@ const FAQ = () => {
         <h2 className=" text-center text-white">Frequently Asked Question</h2>
         <div className="collapse collapse-plus bg-base-300 mb-4">
           <input type="radio" name="my-accordion-3" defaultChecked />
-          <div className="collapse-title text-base font-medium">
+          <div className="collapse-title text-sm font-semibold">
             What is Law Society and what services do you offer?
           </div>
           <div className="collapse-content bg-white text-xs">
@@ -21,7 +21,7 @@ const FAQ = () => {
         </div>
         <div className="collapse collapse-plus bg-base-300 mb-4">
           <input type="radio" name="my-accordion-3" />
-          <div className="collapse-title text-base font-medium">
+          <div className="collapse-title text-sm font-medium">
             Do you offer free legal advice?
           </div>
           <div className="collapse-content bg-white text-xs">
@@ -34,7 +34,7 @@ const FAQ = () => {
         </div>
         <div className="collapse collapse-plus bg-base-300 mb-4">
           <input type="radio" name="my-accordion-3" />
-          <div className="collapse-title text-base font-medium">
+          <div className="collapse-title text-sm font-medium">
             Can Law Society help with business legal compliance?
           </div>
           <div className="collapse-content bg-white text-xs">

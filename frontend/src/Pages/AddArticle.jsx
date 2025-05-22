@@ -3,18 +3,20 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { UserData } from "../UserContext";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
+import DOMPurify from "dompurify";
 
 const AddArticle = () => {
   const navigate = useNavigate();
   const { user } = UserData();
-  console.log(user.user?.fullname);
 
   const [formData, setFormData] = useState({
     title: "",
     category: "",
     description: "",
     date: "",
-    writtenBy: user.user?.fullname || "", // Optional
+    writtenBy: user.user?.fullname || "",
   });
 
   const [image, setImage] = useState(null);
@@ -36,10 +38,13 @@ const AddArticle = () => {
 
     if (!image) return toast.error("Image is required bhai");
 
+    // ✅ Sanitize description before submitting
+    const sanitizedDescription = DOMPurify.sanitize(formData.description);
+
     const data = new FormData();
     data.append("title", formData.title);
     data.append("category", formData.category);
-    data.append("description", formData.description);
+    data.append("description", sanitizedDescription); // Use sanitized HTML
     data.append("date", formData.date);
     data.append("writtenBy", formData.writtenBy);
     data.append("image", image);
@@ -59,50 +64,63 @@ const AddArticle = () => {
       toast.success("Article added successfully 🚀");
       navigate("/articles");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Article upload failed 😡");
     }
   };
+
   return (
-    <>
-      <div className="article-form-container">
-        <h2>Add New Article</h2>
-        <form
-          onSubmit={handleSubmit}
-          encType="multipart/form-data"
-          className="article-form"
-        >
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="category"
-            placeholder="Category"
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="description"
-            placeholder="Description"
-            onChange={handleChange}
-            required
-          />
-          <input type="date" name="date" onChange={handleChange} required />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
-          />
-          <button type="submit">Add Article</button>
-        </form>
-      </div>
-    </>
+    <div className="article-form-container">
+      <h2>Add New Article</h2>
+      <form
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        className="article-form"
+      >
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          onChange={handleChange}
+          required
+        />
+        <ReactQuill
+          theme="snow"
+          value={formData.description}
+          onChange={(value) =>
+            setFormData((prev) => ({
+              ...prev,
+              description: value,
+            }))
+          }
+          // modules={{
+          //   toolbar: [
+          //     [{ header: [1, 2, 3, false] }],
+          //     ["bold", "italic", "underline"],
+          //     [{ list: "ordered" }, { list: "bullet" }],
+          //     ["link"],
+          //     ["clean"],
+          //   ],
+          // }}
+          placeholder="Write your article here..."
+        />
+        <input type="date" name="date" onChange={handleChange} required />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          required
+        />
+        <button type="submit">Add Article</button>
+      </form>
+    </div>
   );
 };
 

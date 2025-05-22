@@ -132,7 +132,7 @@ const Navbar = () => {
           </div>
 
           {/* Jobs Dropdown */}
-          <div
+          {/* <div
             className={`dropdown ${activeDropdown === "jobs" ? "active" : ""}`}
           >
             <button
@@ -170,7 +170,7 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Resources Dropdown */}
           <div
@@ -274,20 +274,36 @@ const Navbar = () => {
                   />
                 </button>
                 <div className="dropdown-content">
-                  <button onClick={() => navigate("/profile")}>
+                  <button
+                    onClick={() => {
+                      closeNavbar();
+                      navigate("/my-profile");
+                    }}
+                  >
                     <span>My Profile</span>
                   </button>
-                  <button onClick={() => navigate("/saved")}>
+
+                  <button
+                    onClick={() => {
+                      closeNavbar();
+                      navigate("/saved");
+                    }}
+                  >
                     <span>Saved Internships</span>
                   </button>
-                  <button onClick={handleLogout}>
+                  <button
+                    onClick={() => {
+                      closeNavbar();
+                      handleLogout();
+                    }}
+                  >
                     <span>Logout</span>
                   </button>
                 </div>
               </div>
             ) : (
               <Link to="/login">
-                <button className="btn-login">
+                <button className="btn-login" onClick={closeNavbar}>
                   Login
                   <svg className="icon" viewBox="0 0 24 24">
                     <path

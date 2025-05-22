@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "../Components/Card";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { UserData } from "../UserContext";
 
 const Articles = () => {
-  const { user } = UserData();
+  const { user, getAllArticles } = UserData();
+  const location = useLocation();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    getAllArticles();
+  }, [location.pathname]);
   const handleAddArticle = () => {
     navigate("/add-article");
   };

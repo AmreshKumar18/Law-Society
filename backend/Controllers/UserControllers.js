@@ -65,3 +65,15 @@ export const loginUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+
+// single user profile
+export const getSingleUserProfile = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await Users.findById(userId);
+    return res.status(200).json({ user });
+  } catch (error) {
+    return res.status(400).json({ error: error.message });
+  }
+};

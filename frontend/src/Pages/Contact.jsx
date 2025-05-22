@@ -1,8 +1,8 @@
 import React from "react";
-import contact from "../Assets/contact.jpg";
 import mobile from "../Assets/mobile.png";
 import email from "../Assets/email.png";
 import call from "../Assets/call.jpg";
+import getintouch from "../Assets/getintouch.jpg";
 import { useForm } from "react-hook-form";
 import { UserData } from "../UserContext";
 
@@ -57,7 +57,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="contact_right">
-            <img src={contact} alt="" />
+            <img src={getintouch} alt="contact" />
           </div>
         </div>
         {/*  */}
