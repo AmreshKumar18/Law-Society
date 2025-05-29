@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Free from "../Assets/Free.jpg";
+import { useNavigate, useParams } from "react-router-dom";
 import NGO from "../Assets/NGO.jpg";
 import clock from "../Assets/clock.png";
-import WhatsApp from "../Assets/WhatsApp.jpg";
-import Career from "../Assets/Career.jpg";
 import { Link } from "react-router-dom";
+import { UserData } from "../UserContext";
+import newBadge from "../Assets/new.png";
+import DOMPurify from "dompurify";
 
 const CategoryWiseInternship = () => {
-  const { category } = useParams(); // Get the category from the URL
+  const { user } = UserData();
+  const navigate = useNavigate();
+  const { category } = useParams();
   const [internships, setInternships] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +33,18 @@ const CategoryWiseInternship = () => {
     fetchInternships();
   }, [category]);
 
+  const isNew = (dateString) => {
+    const today = new Date();
+    const posted = new Date(dateString);
+    const diffTime = today - posted;
+    const diffDays = diffTime / (1000 * 60 * 60 * 24);
+    return diffDays <= 7;
+  };
+
+  const handleAddArticle = () => {
+    navigate("/add-internship");
+  };
+
   const formatDate = (isoString) => {
     if (!isoString) return "";
     const dateObj = new Date(isoString);
@@ -43,24 +57,48 @@ const CategoryWiseInternship = () => {
 
   return (
     <>
-      {/* <div>
-        <h1>{decodeURIComponent(category)} Internships</h1>
-        {internships.map((internship) => (
-          <div key={internship._id}>
-            <h2>{internship.title}</h2>
-            <p>{internship.company}</p>
-            <p>{internship.description}</p>
-          </div>
-        ))}
-      </div> */}
       <div className="categorywise_section">
         <h1 className=" text-black">{decodeURIComponent(category)}</h1>
+      </div>
+      <div>
+        {user.user?.role === "admin" ? (
+          <>
+            <div className="add_art_btn" onClick={handleAddArticle}>
+              <span className=" mr-2">
+                <svg
+                  class="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14m-7 7V5"
+                  />
+                </svg>
+              </span>
+
+              <p>Add Article</p>
+            </div>
+          </>
+        ) : (
+          <p>not admin</p>
+        )}
       </div>
       <div className=" category_internship_container">
         <div className="internshipsdetails_sec">
           {internships.map((item) => (
             <Link to={`/internship/details/${item._id}`}>
               <div className="internship_sec">
+                {isNew(item.postedOn) && (
+                  <img src={newBadge} alt="New" className="new-badge" />
+                )}
                 <div className="internships_img">
                   <img src={NGO} alt="" />
                 </div>
@@ -69,7 +107,13 @@ const CategoryWiseInternship = () => {
                     {item.category}
                   </div>
                   <h4>{item.title}</h4>
-                  <p>{item.description}</p>
+                  <div
+                    className="description"
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(item.description),
+                    }}
+                  />
+
                   <div className="time_icon">
                     <img src={clock} alt="" />
                     <h6>{formatDate(item.postedOn)}</h6>

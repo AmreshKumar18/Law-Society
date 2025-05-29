@@ -11,6 +11,7 @@ const ArticleDetails = () => {
   const navigate = useNavigate();
   const [articleDetails, setArticleDetails] = useState([]);
   const { id } = useParams();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

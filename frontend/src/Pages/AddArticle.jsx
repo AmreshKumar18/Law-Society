@@ -106,6 +106,7 @@ const AddArticle = () => {
             }))
           }
           placeholder="Write your article here..."
+          required
         />
         <input
           type="date"

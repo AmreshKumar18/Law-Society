@@ -48,7 +48,6 @@ const EditArticle = () => {
         console.error(err);
       }
     };
-
     fetchData();
   }, [id]);
 
