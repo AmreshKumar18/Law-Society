@@ -34,3 +34,13 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+const path = require("path");
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+// For any other route, serve index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
