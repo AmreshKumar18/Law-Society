@@ -1,7 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import path from "path";
-import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -37,11 +35,3 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-});

@@ -1735,6 +1735,15 @@ h6 a:hover {
   user-select: none;
 }
 
+/* Card.css */
+.newbadge>img {
+  display: block;
+  margin: -38px -25px 10px auto;
+  width: 90px;
+}
+
+
+/* Add hover effect if desired */
 
 
 /* Responsive Styles */

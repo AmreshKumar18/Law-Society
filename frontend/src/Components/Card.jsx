@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { UserData } from "../UserContext";
+import badge from "../Assets/badge.png";
 
 const Card = () => {
   const { articles } = UserData();
@@ -24,6 +25,9 @@ const Card = () => {
               </span>
               <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">
                 {item.writtenBy}
+              </span>
+              <span className="newbadge">
+                <img src={badge} alt="" />
               </span>
             </div>
             <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">
