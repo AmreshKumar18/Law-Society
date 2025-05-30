@@ -1695,6 +1695,48 @@ h6 a:hover {
 }
 
 
+.lgn-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(70, 130, 180, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lgn-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.lgn-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6b8ce3, #284894);
+  box-shadow: 0 8px 16px rgba(70, 130, 180, 0.6);
+}
+
+.lgn-btn:hover:not(:disabled) svg {
+  transform: translateX(5px);
+}
+
+.lgn-btn:disabled {
+  background: wheat;
+  cursor: not-allowed;
+  box-shadow: none;
+  color: black;
+}
+
+.lgn-btn span {
+  user-select: none;
+}
+
+
+
 /* Responsive Styles */
 @media (max-width: 992px) {
   .navbar-container {

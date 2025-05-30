@@ -6,9 +6,11 @@ export const newUser = async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
     let user = await Users.findOne({ email });
+
     if (user) {
-      res.status(409).json({ message: "User Already Registered" });
+      return res.status(409).json({ message: "User Already Registered" });
     }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     user = {
@@ -24,15 +26,17 @@ export const newUser = async (req, res) => {
     await Users.create(user);
 
     return res.status(200).json({
+      success: true,
       message: "User created successfully",
       token: activationToken,
     });
   } catch (error) {
     console.error("Error creating user:", error);
 
-    // Make sure to send only one response
     if (!res.headersSent) {
-      res.status(500).json({ message: "Internal Server Error" });
+      return res
+        .status(500)
+        .json({ message: "Internal Server Error", success: false }); // ✅ return with success: false
     }
   }
 };
@@ -65,7 +69,6 @@ export const loginUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
 
 // single user profile
 export const getSingleUserProfile = async (req, res) => {
