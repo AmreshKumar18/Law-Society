@@ -1,5 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -35,12 +37,11 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
 
-const path = require("path");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Serve the static files from the React app
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-// For any other route, serve index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
