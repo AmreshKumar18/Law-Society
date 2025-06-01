@@ -544,7 +544,7 @@ input:focus {
 .add_art_btn {
   display: flex;
   justify-content: space-between;
-  width: 140px;
+  width: 160px;
   cursor: pointer;
   padding: 8px 10px;
   border-radius: 10px;
@@ -1875,6 +1875,8 @@ h6 a:hover {
 
 /* responsive */
 @media only screen and (max-width: 480px) {
+
+
   .services {
     display: grid;
     grid-template-columns: auto;
@@ -2040,12 +2042,13 @@ h6 a:hover {
   .add_art_btn {
     display: flex;
     justify-content: space-between;
-    width: 125px;
+    width: 140px;
     cursor: pointer;
     padding: 8px 10px;
     border-radius: 10px;
     background-color: rgb(52, 238, 52);
     align-items: center;
+    margin: auto;
   }
 
   .add_art_btn>p {
@@ -2694,6 +2697,23 @@ h6 a:hover {
     flex-direction: column;
     align-items: stretch;
     padding: 0rem;
+  }
+
+  .add_art_btn {
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: rgb(52, 238, 52);
+    align-items: center;
+    margin: auto;
+  }
+
+  .categorywise_section>h1 {
+    font-size: 30px;
+    text-align: center;
   }
 
   .connection {

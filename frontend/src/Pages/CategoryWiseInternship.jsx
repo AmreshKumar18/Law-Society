@@ -60,7 +60,7 @@ const CategoryWiseInternship = () => {
       <div className="categorywise_section">
         <h1 className=" text-black">{decodeURIComponent(category)}</h1>
       </div>
-      <div>
+      <div className="add_art_btn_sec">
         {user.user?.role === "admin" ? (
           <>
             <div className="add_art_btn" onClick={handleAddArticle}>

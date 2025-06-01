@@ -5,6 +5,13 @@ import badge from "../Assets/badge.png";
 
 const Card = () => {
   const { articles } = UserData();
+  const isNew = (dateString) => {
+    const today = new Date();
+    const posted = new Date(dateString);
+    const diffTime = today - posted;
+    const diffDays = diffTime / (1000 * 60 * 60 * 24);
+    return diffDays <= 7;
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
@@ -26,9 +33,11 @@ const Card = () => {
               <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full">
                 {item.writtenBy}
               </span>
-              <span className="newbadge">
-                <img src={badge} alt="" />
-              </span>
+              {isNew(item.date) && (
+                <span className="newbadge">
+                  <img src={badge} alt="" />
+                </span>
+              )}
             </div>
             <h3 className="text-lg font-semibold text-gray-800 mb-3 line-clamp-2">
               {item.title}
