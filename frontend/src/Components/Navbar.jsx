@@ -38,13 +38,6 @@ const Navbar = () => {
     "Internship Guide",
   ];
 
-  const jobCategories = [
-    "Government Job",
-    "Law Firm Job",
-    "College Job",
-    "Legal Job",
-  ];
-
   const resourceCategories = ["Legal Draft", "Career Guide", "Legal News"];
 
   const opportunityCategories = [
@@ -58,15 +51,17 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        {/* Logo */}
-        <div className="navbar-logo">
-          <Link to="/">
-            <img src={logo} alt="Law Society Logo" />
-          </Link>
+      
+        {/* Logo - Fully left on large screen */}
+        <div className="navbar-left">
+          <div className="navbar-logo">
+            <Link to="/">
+              <img src={logo} alt="Law Society Logo" />
+            </Link>
+          </div>
         </div>
-        <div className="navbar-spacer"></div>
-        {/* Toggle Button for Mobile */}
+
+        {/* Toggle for Mobile */}
         <div
           className={`navbar-toggle ${isOpen ? "active" : ""}`}
           onClick={toggleNavbar}
@@ -76,194 +71,158 @@ const Navbar = () => {
           <span className="icon-bar"></span>
         </div>
 
-        {/* Navigation Links with Auth Button */}
-        <div className={`navbar-links ${isOpen ? "active" : ""}`}>
-          <Link to="/" className="nav-link" onClick={closeNavbar}>
-            Home
-          </Link>
-          <Link to="/about" className="nav-link" onClick={closeNavbar}>
-            About
-          </Link>
-          <Link to="/articles" className="nav-link" onClick={closeNavbar}>
-            Articles
-          </Link>
+        {/* Center - Navigation Links */}
+        <div className="navbar-center">
+          <div className={`navbar-links ${isOpen ? "active" : ""}`}>
+            <Link to="/" className="nav-link" onClick={closeNavbar}>
+              Home
+            </Link>
+            <Link to="/about" className="nav-link" onClick={closeNavbar}>
+              About
+            </Link>
+            <Link to="/articles" className="nav-link" onClick={closeNavbar}>
+              Articles
+            </Link>
 
-          {/* Internships Dropdown */}
-          <div
-            className={`dropdown ${
-              activeDropdown === "internships" ? "active" : ""
-            }`}
-          >
-            <button
-              className="dropdown-toggle nav-link"
-              onClick={() => toggleDropdown("internships")}
+            {/* Internships Dropdown */}
+            <div
+              className={`dropdown ${
+                activeDropdown === "internships" ? "active" : ""
+              }`}
             >
-              Internships{" "}
-              <span className="arrow">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9l6 6 6-6"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div className="dropdown-menu">
-              {internshipCategories.map((category, index) => (
-                <Link
-                  key={index}
-                  to={`/internships/category/${encodeURIComponent(category)}`}
-                  className="dropdown-item"
-                  onClick={closeNavbar}
-                >
-                  {category}
-                </Link>
-              ))}
+              <button
+                className="dropdown-toggle nav-link"
+                onClick={() => toggleDropdown("internships")}
+              >
+                Internships{" "}
+                <span className="arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div className="dropdown-menu">
+                {internshipCategories.map((category, index) => (
+                  <Link
+                    key={index}
+                    to={`/internships/category/${encodeURIComponent(category)}`}
+                    className="dropdown-item"
+                    onClick={closeNavbar}
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
             </div>
+
+            {/* Resources Dropdown */}
+            <div
+              className={`dropdown ${
+                activeDropdown === "resources" ? "active" : ""
+              }`}
+            >
+              <button
+                className="dropdown-toggle nav-link"
+                onClick={() => toggleDropdown("resources")}
+              >
+                Resources{" "}
+                <span className="arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div className="dropdown-menu">
+                {resourceCategories.map((category, index) => (
+                  <Link
+                    key={index}
+                    to={`/resources/category/${encodeURIComponent(category)}`}
+                    className="dropdown-item"
+                    onClick={closeNavbar}
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Opportunities Dropdown */}
+            <div
+              className={`dropdown ${
+                activeDropdown === "opportunities" ? "active" : ""
+              }`}
+            >
+              <button
+                className="dropdown-toggle nav-link"
+                onClick={() => toggleDropdown("opportunities")}
+              >
+                Opportunities{" "}
+                <span className="arrow">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <div className="dropdown-menu">
+                {opportunityCategories.map((category, index) => (
+                  <Link
+                    key={index}
+                    to={`/opportunities/category/${encodeURIComponent(
+                      category
+                    )}`}
+                    className="dropdown-item"
+                    onClick={closeNavbar}
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link to="/contact" className="nav-link" onClick={closeNavbar}>
+              Contact
+            </Link>
           </div>
+        </div>
 
-          {/* Jobs Dropdown */}
-          {/* <div
-            className={`dropdown ${activeDropdown === "jobs" ? "active" : ""}`}
-          >
-            <button
-              className="dropdown-toggle nav-link"
-              onClick={() => toggleDropdown("jobs")}
-            >
-              Jobs{" "}
-              <span className="arrow">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9l6 6 6-6"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div className="dropdown-menu">
-              {jobCategories.map((category, index) => (
-                <Link
-                  key={index}
-                  to={`/jobs/category/${encodeURIComponent(category)}`}
-                  className="dropdown-item"
-                  onClick={closeNavbar}
-                >
-                  {category}
-                </Link>
-              ))}
-            </div>
-          </div> */}
-
-          {/* Resources Dropdown */}
-          <div
-            className={`dropdown ${
-              activeDropdown === "resources" ? "active" : ""
-            }`}
-          >
-            <button
-              className="dropdown-toggle nav-link"
-              onClick={() => toggleDropdown("resources")}
-            >
-              Resources{" "}
-              <span className="arrow">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9l6 6 6-6"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div className="dropdown-menu">
-              {resourceCategories.map((category, index) => (
-                <Link
-                  key={index}
-                  to={`/resources/category/${encodeURIComponent(category)}`}
-                  className="dropdown-item"
-                  onClick={closeNavbar}
-                >
-                  {category}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Opportunities Dropdown */}
-          <div
-            className={`dropdown ${
-              activeDropdown === "opportunities" ? "active" : ""
-            }`}
-          >
-            <button
-              className="dropdown-toggle nav-link"
-              onClick={() => toggleDropdown("opportunities")}
-            >
-              Opportunities{" "}
-              <span className="arrow">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9l6 6 6-6"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <div className="dropdown-menu">
-              {opportunityCategories.map((category, index) => (
-                <Link
-                  key={index}
-                  to={`/opportunities/category/${encodeURIComponent(category)}`}
-                  className="dropdown-item"
-                  onClick={closeNavbar}
-                >
-                  {category}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <Link to="/contact" className="nav-link" onClick={closeNavbar}>
-            Contact
-          </Link>
-          <div className="navbar-spacer"></div>
-
-          {/* Auth Button - Now properly aligned */}
+        {/* Right - Login/Profile */}
+        <div className="navbar-right">
           <div className="auth-section">
             {isAuth ? (
               <div className="profile-dropdown">
@@ -282,7 +241,6 @@ const Navbar = () => {
                   >
                     <span>My Profile</span>
                   </button>
-
                   <button
                     onClick={() => {
                       closeNavbar();
@@ -319,7 +277,6 @@ const Navbar = () => {
             )}
           </div>
         </div>
-      </div>
     </nav>
   );
 };
